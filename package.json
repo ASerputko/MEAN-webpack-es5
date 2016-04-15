@@ -1,0 +1,35 @@
+{
+  "name": "temp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf ./build",
+    "copy": "cp -a ./src/server ./build/server && cp -a ./package.json ./build/package.json && cp -a ./node_modules ./build/node_modules ",
+    "serve": "NODE_ENV=webpack node ./src/server/server.js",
+    "build": "npm run clean && webpack --config ./config/webpack.js -p && npm run copy"
+  },
+  "keywords": [],
+  "author": "Andrii Serputko <aserputko@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "morgan": "^1.7.0"
+  },
+  "devDependencies": {
+    "angular": "^1.5.3",
+    "css-loader": "^0.23.1",
+    "file-loader": "^0.8.5",
+    "html-loader": "^0.4.3",
+    "html-webpack-plugin": "^2.15.0",
+    "less": "^2.6.1",
+    "less-loader": "^2.2.3",
+    "node-libs-browser": "^1.0.0",
+    "rimraf": "^2.5.2",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.12.15",
+    "webpack-dev-middleware": "^1.6.1"
+  }
+}
