@@ -3,6 +3,7 @@ var HtmlPlugin   = require('html-webpack-plugin');
 var path = require('path');
 var rootPath = process.env.PWD;
 var appPath = path.join(rootPath, 'src', 'client');
+var jshintReporter = require('jshint-loader-stylish')({});
 
 module.exports = {
     /** entry points */
@@ -24,7 +25,8 @@ module.exports = {
         loaders: [
             { test: /\.html$/, loader: 'html-loader' },
             { test: /\.less$/, loader: 'style-loader!css-loader!less-loader' },
-            { test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/, loader: 'file-loader' }
+            { test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/, loader: 'file-loader' },
+            { test: /\.js$/, exclude: /node_modules/, loader: 'jshint-loader' }
         ]
     },
     resolve: {
@@ -46,5 +48,8 @@ module.exports = {
             filename: 'index.html',
             template: path.join(appPath, 'index.html')
         })
-    ]
+    ],
+    jshint : {
+        reporter : jshintReporter
+    }
 };
